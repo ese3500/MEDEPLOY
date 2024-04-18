@@ -3,6 +3,7 @@
  // DAILING ESP32 MAC ADDRESS:
  // CC:DB:A7:10:8E:10
 
+// pin 2 and 12 need to be low for flashing
 #include <esp_now.h>
 #include <WiFi.h>
 
@@ -16,7 +17,11 @@ String success;
 //Must match the receiver structure
 typedef struct struct_message {
     char msg[100];
-    int state;
+    //int state;
+    int p1;
+    int p2;
+    int p3;
+    int door;
 } struct_message;
 
 struct_message outgoing;
@@ -46,9 +51,12 @@ void OnDataRecv(const uint8_t * mac, const uint8_t *incomingData, int len) {
   //Serial.println(len);
   //in = incoming.msg;
   Serial.println("INCOMING MESSAGE");
-  Serial.println(incoming.state);
+  Serial.println(incoming.p1);
+  Serial.println(incoming.p2);
+  Serial.println(incoming.p3);
+  Serial.println();
 
-  if (incoming.state == 1) {
+  /*if (incoming.state == 1) {
     digitalWrite(12, HIGH);
     digitalWrite(13, LOW);
   } else if (incoming.state == 2) {
@@ -57,14 +65,36 @@ void OnDataRecv(const uint8_t * mac, const uint8_t *incomingData, int len) {
   } else {
     digitalWrite(12, LOW);
     digitalWrite(13, LOW);
+  }*/
+  if (incoming.p1 == 1) {
+    digitalWrite(33, HIGH);
+  } else {
+    digitalWrite(33, LOW);
+  }
+  if (incoming.p2 == 1) {
+    digitalWrite(13, HIGH);
+  } else {
+    digitalWrite(13, LOW);
+  }
+  if (incoming.p3 == 1) {
+    digitalWrite(27, HIGH);
+  } else {
+    digitalWrite(27, LOW);
+  }
+  if (incoming.door == 1) {
+    digitalWrite(14, HIGH);
+  } else {
+    digitalWrite(14, LOW);
   }
 }
  
 void setup() {
   Serial.begin(115200);
   
-  pinMode(12, OUTPUT); // high for forward
+  pinMode(33, OUTPUT); // high for forward
   pinMode(13, OUTPUT); // high for backward
+  pinMode(27, OUTPUT);
+  pinMode(14, OUTPUT);
   // dont move when both low
 
   // Set device as a Wi-Fi Station

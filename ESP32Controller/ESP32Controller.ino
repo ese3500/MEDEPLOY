@@ -16,7 +16,11 @@ String success;
 //Must match the receiver structure
 typedef struct struct_message {
     char msg[100];
-    int state;
+    //int state;
+    int p1;
+    int p2;
+    int p3;
+    int door;
 } struct_message;
 
 struct_message outgoing;
@@ -51,8 +55,10 @@ void OnDataRecv(const uint8_t * mac, const uint8_t *incomingData, int len) {
  
 void setup() {
   Serial.begin(115200);
-  pinMode(12, INPUT); // high for forward
-  pinMode(13, INPUT); // high for backward
+  pinMode(5, INPUT); // high for forward
+  pinMode(18, INPUT); // high for backward
+  pinMode(12, INPUT);
+  pinMode(14, INPUT); // open door
   // dont move when both low
 
 
@@ -84,14 +90,42 @@ void setup() {
 }
  
 void loop() {
-  if (digitalRead(12) == HIGH && digitalRead(13) == LOW) {
-    outgoing.state = 1;
-  } else if (digitalRead(12) == LOW && digitalRead(13) == HIGH) {
-    outgoing.state = 2;
-  }else {
-    outgoing.state = 3;
+  /*if (digitalRead(12) == HIGH && digitalRead(18) == LOW && digitalRead(13) == LOW) {
+    outgoing.state = 1; //forward
+  } else if (digitalRead(12) == LOW && digitalRead(18) == HIGH && digitalRead(13) == LOW) {
+    outgoing.state = 2; //backward
+  }else if (digitalRead(12) == HIGH && digitalRead(18) == HIGH && digitalRead(13) == LOW) {
+    outgoing.state = 3; //left
+  } else if (digitalRead(12) == HIGH && digitalRead(18) == LOW && digitalRead(13) == HIGH) {
+    outgoing.state = 4; //right
+  } else {
+    outgoing.state = 5; //neutral
   }
-  Serial.println(outgoing.state);
+  Serial.println(outgoing.state);*/
+  if (digitalRead(12) == HIGH) {
+    outgoing.p1 = 1;
+  } else {
+    outgoing.p1 = 0;
+  }
+  if (digitalRead(18) == HIGH) {
+    outgoing.p2 = 1;
+  } else {
+    outgoing.p2 = 0;
+  }
+  if (digitalRead(13) == HIGH) {
+    outgoing.p3 = 1;
+  } else {
+    outgoing.p3 = 0;
+  }
+  if (digitalRead(14) == HIGH) {
+    outgoing.door = 1;
+  } else {
+    outgoing.door = 0;
+  }
+  Serial.println(outgoing.p1);
+  Serial.println(outgoing.p2);
+  Serial.println(outgoing.p3);
+  Serial.println();
   strcpy(outgoing.msg, "This is the controller");
   // Send message via ESP-NOW
   esp_err_t result = esp_now_send(broadcastAddress, (uint8_t *) &outgoing, sizeof(outgoing));
