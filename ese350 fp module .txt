@@ -1,0 +1,55 @@
+/*
+  DigitalReadSerial
+
+  Reads a digital input on pin 2, prints the result to the Serial Monitor
+
+  This example code is in the public domain.
+
+  https://www.arduino.cc/en/Tutorial/BuiltInExamples/DigitalReadSerial
+*/
+
+// digital pin 2 has a pushbutton attached to it. Give it a name:
+int pinLSB = 13;
+int pinMB = 12;
+int pinMSB = 27;
+int qnum = 1;
+bool waiting = true;
+
+// the setup routine runs once when you press reset:
+void setup() {
+  // initialize serial communication at 9600 bits per second:
+  Serial.begin(9600);
+  // make the pushbutton's pin an input:
+  pinMode(pinLSB, INPUT);
+  pinMode(pinMB, INPUT);
+  pinMode(pinMSB, INPUT);
+  delay(10000);
+}
+
+// the loop routine runs over and over again forever:
+void loop() {
+  // read the input pin:
+  int LSB = digitalRead(pinLSB);
+  int MB = digitalRead(pinMB);
+  int MSB = digitalRead(pinMSB);
+
+  // print out the state of the button:
+  int state = 4*MSB + 2*MB + LSB;
+  if (state != 7 && waiting){
+    waiting = false; 
+    if (qnum == 1){
+      Serial.println("Pain rating: ");
+      Serial.print(state);
+    }
+    else if (qnum == 2){
+      Serial.println("Help needed: ");
+      Serial.print(state);
+    }
+    qnum++;
+  }
+  if (state == 7){
+    waiting = true;
+  }
+  //Serial.println(4*MSB + 2*MB + LSB);
+  delay(10);  // delay in between reads for stability
+}
