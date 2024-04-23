@@ -85,22 +85,22 @@ int main(void)
 		} else {
 			x = ADC;
 		}
-		if (y >= 900 && x > 400 && x < 600) {
+		if (y >= 900 && x > 300 && x < 700) {
 			// forwards 100
 			PORTD |= (1<<PORTD4);
 			PORTD &= ~(1<<PORTD2);
 			PORTD &= ~(1<<PORTD3);
-		} else if (y <= 200 && x > 400 && x < 600) {
+		} else if (y <= 200 && x > 300 && x < 700) {
 			// backwards 010
 			PORTD |= (1<<PORTD2);
 			PORTD &= ~(1<<PORTD4);
 			PORTD &= ~(1<<PORTD3);
-		} else if (x >= 900 && y > 400 && y < 600) {
+		} else if (x >= 900 && y > 300 && y < 700) {
 			// left 110
 			PORTD |= (1<<PORTD4);
 			PORTD |= (1<<PORTD2);
 			PORTD &= ~(1<<PORTD3);
-		} else if (x <= 200 && y > 400 && y < 600) {
+		} else if (x <= 200 && y > 300 && y < 700) {
 			// right 101
 			PORTD &= ~(1<<PORTD2);
 			PORTD |= (1<<PORTD4);
