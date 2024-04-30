@@ -1,5 +1,5 @@
 <div style="float:right; margin:0 10px 0 0;">
-    <img src="carnice.png" width="400" height="500" style="border: 4px solid white;" alt="Description of the image">
+    <img src="carnice.png" width="400" height="500" style="border: 4px solid #2497FF;" alt="Description of the image">
 </div>
 
 Team Name: MEDEPLOY
@@ -18,7 +18,7 @@ Description of hardware: 3 ATMEGA328PB's, 3 ESP32 Feathers, 1 ESP32 CAM, UPenn E
 
 ### 1. Demo Video
 
-<video src="Demo Video.mov" style="border: 2px solid #2497FF ;" width="400" height="" controls ></video>
+<video src="Demo Video.mov" style="border: 2px solid #2497FF ;" width="600" height="" controls ></video>
 
 [High Quality Video](https://drive.google.com/file/d/1yMe_-LCpSN9gtZ2RiFGLqDbZkPeV5HWe/view?usp=sharing)
 
