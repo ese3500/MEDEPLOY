@@ -59,6 +59,20 @@ The device’s design remained the same as described in our proposal. Two button
 
 Based on your quantified system performance, comment on how you achieved or fell short of your expected software requirements. You should be quantifying this, using measurement tools to collect data.
 
+SRS 01 – Car ESP32 shall read 4 different push button states from Blynk over wifi using Arduino as we did in Pong. It shall check for forward, reverse buttons and turn left, right buttons at every tick. As long as these buttons are pressed, it shall pull a corresponding pin high on the AtMega for motor control.
+
+We changed this SRS for joystick control. Because there was only one ADC on the AtMega, we rapidly switched between pins to get a reading of the x direction and y direction of the joystick. At the end of each loop, we do ```ADMUX ^= (1 << MUX0);``` to switch between pins PC0 and PC1 which correspond to x ADC and y ADC respectively. We move forward only if ```y >= 900 && x > 300 && x < 700```. We move backwards only if ```y <= 200 && x > 300 && x < 700```. We move left only if ```x >= 900 && y > 300 && y < 700```. We move right only if ```x <= 200 && y > 300 && y < 700```. This restricts movement control to only the far top, bottom, left, and right areas of the joystick. Everything else is neutral.
+SRS 02 – Car AtMega shall read the 4 pins and determine what direction the car is moving. Steering is done by spinning one wheel faster than the other. Therefore, the AtMega shall calculate the duty cycles of the left and right motors by setting OCR1B of Timer1 in Phase Correct PWM Mode. 75% duty cycle is full throttle and a difference of 50% duty cycle between each wheel will allow for steering.
+
+SRS 03 – Device ESP32 shall send and receive data. Using the same Blynk protocol, the ESP32 receives data from two buttons under the LCD screen, corresponding to yes or no answers to prompts. A yes is 1 and a no is 0. The ESP32 will send this data to the driver’s computer. Answers will be displayed on the computer screen in real time.
+
+
+SRS 04 – Device AtMega shall cycle through a prepared series of diagnostic questions for the victim. It will read the button presses and only advance to the next question once the current question is answered. It should also have an internal timer that sends an alarm if the victim is unresponsive.
+
+
+SRS 05 – ESP32CAM shall implement Arduino code to wirelessly connect back to a computer in front of the driver for a live video feed.
+
+
 #### 3.2 Hardware Requirements Specification (HRS) Results
 
 Based on your quantified system performance, comment on how you achieved or fell short of your expected hardware requirements. You should be quantifying this, using measurement tools to collect data.
