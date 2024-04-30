@@ -169,7 +169,7 @@ Added to Final Project Proposal Slide Deck.
 
 ## Final Project Report
 
-Final Project Github Page: 
+[Final Project Github Page](https://ese3500.github.io/final-project-medeploy/)
 
 ### 1. Video
 
@@ -217,15 +217,3 @@ Reflect on your project. Some questions to consider: What did you learn from it?
 ## References
 
 Fill in your references here as you work on your proposal and final submission. Describe any libraries used here.
-
-## Github Repo Submission Resources
-
-You can remove this section if you don't need these references.
-
-* [ESE5160 Example Repo Submission](https://github.com/ese5160/example-repository-submission)
-* [Markdown Guide: Basic Syntax](https://www.markdownguide.org/basic-syntax/)
-* [Adobe free video to gif converter](https://www.adobe.com/express/feature/video/convert/video-to-gif)
-* [Curated list of example READMEs](https://github.com/matiassingers/awesome-readme)
-* [VS Code](https://code.visualstudio.com/) is heavily recommended to develop code and handle Git commits
-  * Code formatting and extension recommendation files come with this repository.
-  * Ctrl+Shift+V will render the README.md (maybe not the images though)
