@@ -1,5 +1,5 @@
 <div style="float:right; margin:0 10px 0 0;">
-    <img src="carnice.png" width="400" height="500" style="border: 4px solid #2497FF;" alt="Description of the image">
+    <img src="carnice.png" width="400" height="500" style="border: 4px solid #2497FF;" alt="car">
 </div>
 
 Team Name: MEDEPLOY
@@ -101,6 +101,11 @@ typedef struct struct_message2 {
 
 **SRS 04** – Device AtMega shall cycle through a prepared series of diagnostic questions for the victim. It will read the button presses and only advance to the next question once the current question is answered. It should also have an internal timer that sends an alarm if the victim is unresponsive.
 
+We fulfilled most of this requirement, as we had a screen that functioned by displaying diagnostic questions for the victim and only displaying the next question if an answer was submitted. However, we decided not to implement the internal timer as with the ESP32CAM, the operator would be able to visually confirm the responsiveness of the victim. 
+
+On the software side, the heart rate was determined using a timer and essentially doing period measurement based on the peaks of the heart waveform. This was not as reliable as we expected, since the waveforms could change in voltage level a lot and thus a fixed threshold value was not as accurate as period measurement with other smoother analog signals, or digital signals. However, we were still able to read the BPM relatively well, within 10BPM (actual BPM being validated with an oscilloscope). 
+
+To transfer the answers from the ATmega to the ESP32 on hardware, we used a bitbanging method where 3 data bit lines were hooked up (so 3 output pins from the ATMEGA, 3 input pins to the ESP). Using a synchronized clock signal, the pins would output 3 bits at a time and this would correspond with different answers and BPMs depending on the clock signal/order of receiving. 
 
 **SRS 05** – ESP32CAM shall implement Arduino code to wirelessly connect back to a computer in front of the driver for a live video feed.
 
@@ -110,13 +115,55 @@ ESP32CAM utilizes the ESP32CAM library to display its UI and livestream. It broa
 
 Based on your quantified system performance, comment on how you achieved or fell short of your expected hardware requirements. You should be quantifying this, using measurement tools to collect data.
 
+**HRS 01** - The medical device shall be based/run on an ATmega328PB.
+
+The medical device was based/run on an ATmega328PB, with power coming through USB from a USB battery bank strapped onto the device. 
+
+**HRS 02** - An adafruit heart rate sensor shall take pulse measurements.
+
+We were able to use the heart rate sensor and power it, while feeding in the output to the ATMEGA analog read. For more information about how BPM was determined from the heart rate sensor, see SRS04. 
+
+**HRS 03** - Buttons shall be attached to the ATmega so that the user can interface with it.
+
+We ended up having 2 buttons, one for switching the option select and one for selecting the current option and proceeding to the next question. These were set up with a pull down resistor, so that normally it reads low but if pressed down it connects the pin with 5V which the ATMEGA was able to read. We were thinking about implementing hardware debouncing but after testing the buttons in use it wasn’t necessary since they worked perfectly fine. 
+
+**HRS 04** - A 1.8” 128x160 TFT LCD from Adafruit shall be controlled using the ST7735R controller through SPI.
+
+We were able to use this LCD and control it via the ST7735R through SPI. Using a graphics library we implemented in a previous lab, we were able to write strings to display on the screen for the user to read. 
+
+**HRS 05** - There shall be an onboard ESP32 so that information can be transferred to and from the device to the car and medical personnel
+
+This ESP32 was able to take in the digital inputs from the ATmega and reverse bit bang them to get the responses and BPM, and then it sent these values to the controller ESP every second (see SRS03 for more information about Wifi send and receive).  
+
+**HRS 06** - The car shall be based/run on an ATmega328PB.
+
+The ATmega on the car, being powered by a USB power brick, takes in the signals from the ESP32 and controls the motor accordingly. 
+
+**HRS 07** - The car motors shall be controlled using PWM from the ATmega, through an LN293 h-bridge IC
+
+The ATmega did not end up using PWM, but it still used the LN293 H bridge IC. See SRS02 for more information on motor control. 
+
+**HRS 08** - The car shall have another ESP32 that will receive signals from the ATmega328PB
+
+The car also had another ESP32 that took in wireless information from the controller, and outputted the signals as bits for the ATmega to read (see SRS02 for more information). 
+
 ### 4. Conclusion
 
 Reflect on your project. Some questions to consider: What did you learn from it? What went well? What accomplishments are you proud of? What did you learn/gain from this experience? Did you have to change your approach? What could have been done differently? Did you encounter obstacles that you didn’t anticipate? What could be a next step for this project?
 
+Throughout the project, we learned a lot about not only how to implement and test hardware and software solutions, but also how to design around a proposal and how to adapt when things go wrong or the project goes down a slightly different path, as nothing ever works out just as you intend. 
+
+Overall, we are proud of what we were able to accomplish with this project. We were able to fulfill most of our SRS and HRS requirements to a high level. We are specifically proud of the wireless communication for both the car and the device being very responsive, as originally we thought this would be the make or break for the project. While nothing about the project changed dramatically since its inception, we ended up implementing different functionalities a lot differently than we originally planned (for example not using Blynk, not using PWM, and some bit banging for inter-controller communication). 
+
+However, something we didn’t account for originally was the mechanical aspect of our project, as due to the necessity of battery power, which we choose to implement using USB charging battery packs, this added a lot of additional weight and took up a lot of space on our car. Looking back, it might have been better on the mechanical side if we went with a regular battery, so that the motors might have had more power, the car would have been lighter, and the payload box could have been. 
+
+We 3D printed the payload box but it was a little bit too small, and we really had to squeeze in the device into it, without room for much else. We based the dimensions of the box based on the breadboard the device was originally hosted on, but neglected the additional size of all the protruding wires, battery packs, and more. 
+
+A next step for this project could be to host all the controlling electronics on a PCB, as well as improving the mechanical housing, so that it begins to look like an actual finalized design and has a very convenient form factor which is also easy to manufacture. In addition, for many parts of the project we ended up bit banging using a special encoding system, but in the future we will look at using something like I2C to be able to transfer data a lot faster and more reliably. Also, we could look at different ways of digital signal processing the input of the heart rate sensor, perhaps using some kind of fourier transform.
+
 ## References
 
-Fill in your references here as you work on your proposal and final submission. Describe any libraries used here.
+We used the ESP32 Cam libraries and the ST7735 graphics library.
 
 ## Final Project Proposal
 
