@@ -5,6 +5,10 @@
 
 #include <esp_now.h>
 #include <WiFi.h>
+#include <WebServer.h>
+
+//#define ssid "Keterrer IOT"
+//#define password "theCl0ud"
 
 // REPLACE WITH THE MAC Address of your receiver 
 uint8_t broadcastAddress[] = {0xEC,0x62,0x60,0x1D,0x11,0x20};
@@ -23,17 +27,25 @@ typedef struct struct_message {
     int door;
 } struct_message;
 
+typedef struct struct_message2 {
+    char msg[100];
+    //int state;
+    int pain;
+    int help;
+    int bpm;
+} struct_message2;
+
 struct_message outgoing;
 
-struct_message incoming;
+struct_message2 incoming;
 String in;
 
 esp_now_peer_info_t peerInfo;
 
 // Callback when data is sent
 void OnDataSent(const uint8_t *mac_addr, esp_now_send_status_t status) {
-  Serial.print("\r\nLast Packet Send Status:\t");
-  Serial.println(status == ESP_NOW_SEND_SUCCESS ? "Delivery Success" : "Delivery Fail");
+  //Serial.print("\r\nLast Packet Send Status:\t");
+  //Serial.println(status == ESP_NOW_SEND_SUCCESS ? "Delivery Success" : "Delivery Fail");
   if (status ==0){
     success = "Delivery Success :)";
   }
@@ -50,11 +62,18 @@ void OnDataRecv(const uint8_t * mac, const uint8_t *incomingData, int len) {
   //Serial.println(len);
   //in = incoming.msg;
   Serial.println("INCOMING MESSAGE");
-  Serial.println(incoming.msg);
+  Serial.print("Pain Level: ");
+  Serial.println(incoming.pain);
+  Serial.print("Help Level: ");
+  Serial.println(incoming.help);
+  Serial.print("BPM: ");
+  Serial.println(incoming.bpm);
+  Serial.println();
 }
  
 void setup() {
   Serial.begin(115200);
+  //WiFi.begin(ssid, password);
   pinMode(5, INPUT); // high for forward
   pinMode(18, INPUT); // high for backward
   pinMode(12, INPUT);
@@ -122,10 +141,10 @@ void loop() {
   } else {
     outgoing.door = 0;
   }
-  Serial.println(outgoing.p1);
-  Serial.println(outgoing.p2);
-  Serial.println(outgoing.p3);
-  Serial.println();
+  //Serial.println(outgoing.p1);
+  //Serial.println(outgoing.p2);
+  //Serial.println(outgoing.p3);
+  //Serial.println();
   strcpy(outgoing.msg, "This is the controller");
   // Send message via ESP-NOW
   esp_err_t result = esp_now_send(broadcastAddress, (uint8_t *) &outgoing, sizeof(outgoing));
