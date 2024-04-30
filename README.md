@@ -2,12 +2,6 @@
     <img src="carnice.png" width="400" height="500" style="border: 4px solid white;" alt="Description of the image">
 </div>
 
-<style>
-    body {
-        background-image: url('background.jpeg')
-    }
-</style>
-
 Team Name: MEDEPLOY
 
 Team Members: Aaron Tsui, Dailing Wu, Ryan He
@@ -24,32 +18,32 @@ Description of hardware: 3 ATMEGA328PB's, 3 ESP32 Feathers, 1 ESP32 CAM, UPenn E
 
 ### 1. Demo Video
 
-<video src="Demo Video.mov" style="border: 2px solid white;" width="400" height="" controls ></video>
+<video src="Demo Video.mov" style="border: 2px solid #2497FF ;" width="400" height="" controls ></video>
 
 [High Quality Video](https://drive.google.com/file/d/1yMe_-LCpSN9gtZ2RiFGLqDbZkPeV5HWe/view?usp=sharing)
 
 ### 2. Images
 
 #### Car 
-<img src="car.jpg" alt="car" width="400" style="border: 2px solid white;"/>
+<img src="car.jpg" alt="car" width="400" style="border: 2px solid #2497FF;"/>
 
 #### Wireless Camera
-<img src="cam.jpg" alt="cam" width="400" style="border: 2px solid white;"/>
+<img src="cam.jpg" alt="cam" width="400" style="border: 2px solid #2497FF;"/>
 
 #### Wireless Camera Video Output
-<img src="computercam.jpg" alt="computercam" width="400" style="border: 2px solid white;"/>
+<img src="computercam.jpg" alt="computercam" width="400" style="border: 2px solid #2497FF;"/>
 
 #### Joystick 
-<img src="joystick.jpg" alt="joystick" width="400" style="border: 2px solid white;"/>
+<img src="joystick.jpg" alt="joystick" width="400" style="border: 2px solid #2497FF;"/>
 
 #### Driving 
-<img src="driving.jpg" alt="driving" width="400" style="border: 2px solid white;"/>
+<img src="driving.jpg" alt="driving" width="400" style="border: 2px solid #2497FF;"/>
 
 #### Deploying Device 
-<img src="deploy.jpg" alt="deploy" width="300" style="border: 2px solid white;"/>
+<img src="deploy.jpg" alt="deploy" width="300" style="border: 2px solid #2497FF;"/>
 
 #### Using Device 
-<img src="device.jpg" alt="device" width="300" style="border: 2px solid white;"/>
+<img src="device.jpg" alt="device" width="300" style="border: 2px solid #2497FF;"/>
 
 ### 3. Results
 
