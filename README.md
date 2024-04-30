@@ -1,11 +1,10 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/2TmiRqwI)
-# final-project-skeleton
+# MEDEPLOY
 
     * Team Name: Medeploy
     * Team Members: Aaron Tsui, Dailing Wu, Ryan He
     * Github Repository URL: https://github.com/ese3500/final-project-medeploy
     * Github Pages Website URL: https://ese3500.github.io/final-project-medeploy/
-    * Description of hardware: 3 ATMEGA328PB's, 3 ESP32 Feathers, UPenn ESE department Halbot, ST7735R controller. See Hardware Requirements Specification for more details. 
+    * Description of hardware: 3 ATMEGA328PB's, 3 ESP32 Feathers, 1 ESP32 CAM, UPenn ESE department Halbot, ST7735R controller. See Hardware Requirements Specification for more details. 
 
 ## Final Project Proposal
 
