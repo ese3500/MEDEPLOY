@@ -18,7 +18,7 @@ Description of hardware: 3 ATMEGA328PB's, 3 ESP32 Feathers, 1 ESP32 CAM, UPenn E
 
 ### 1. Demo Video
 
-<video src="Demo Video.mov" style="border: 2px solid #2497FF ;" width="600" height="" controls ></video>
+<video src="Demo Video.mov" style="border: 2px solid #2497FF ;" width="500" height="" controls ></video>
 
 [High Quality Video](https://drive.google.com/file/d/1yMe_-LCpSN9gtZ2RiFGLqDbZkPeV5HWe/view?usp=sharing)
 
