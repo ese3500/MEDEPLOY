@@ -8,6 +8,69 @@ Github Pages Website URL: [https://ese3500.github.io/MEDEPLOY](https://ese3500.g
 
 Description of hardware: 3 ATMEGA328PB's, 3 ESP32 Feathers, 1 ESP32 CAM, UPenn ESE department Halbot, L293D Motor Driver, ST7735R controller. See Hardware Requirements Specification for more details. 
 
+## Report
+
+[Final Project Github Page](https://ese3500.github.io/MEDEPLOY)
+
+### 1. Demo Video
+
+<video src="Demo Video.mov" width="400" height="300" controls></video>
+
+[High Quality Video](https://drive.google.com/file/d/1yMe_-LCpSN9gtZ2RiFGLqDbZkPeV5HWe/view?usp=sharing)
+
+### 2. Images
+
+#### Car 
+<img src="car.jpg" alt="car" width="400"/>
+
+#### Wireless Camera
+<img src="cam.jpg" alt="cam" width="400"/>
+
+#### Wireless Camera Video Output
+<img src="computercam.jpg" alt="computercam" width="400"/>
+
+#### Joystick 
+<img src="joystick.jpg" alt="joystick" width="400"/>
+
+#### Driving 
+<img src="driving.jpg" alt="driving" width="400"/>
+
+#### Deploying Device 
+<img src="deploy.jpg" alt="deploy" width="300"/>
+
+#### Using Device 
+<img src="device.jpg" alt="device" width="300"/>
+
+### 3. Results
+
+What were your results? Namely, what was the final solution/design to your problem?
+
+The controller, car, and device all have an AtMega and ESP32.
+
+Our final controller design did not utilize Blynk. We instead chose to incorporate manual controls for a more reliable, physical interface on the controller. We used one button to open and close the door on the back of the car. An LED was tied to the button such that it would light when the door opened and turn off when the door closed. Driving was done through a joystick connected to the AtMega using ADC. We programmed 4 directions of travel: forward, backwards, left, and right when the joystick is pushed all the way in the up, down, left, right positions respectively. Direction data is sent through 3 bits, where 101 is forward, 010 is backward, 110 is left, 101 is right.
+
+
+The ESP32s communicate using the ESPNOW protocol, which connects multiple ESP32s by using their MAC addresses instead of Wifi. The car’s ESP32 receives the direction data through a packet and conditions on the 3 bits in the AtMega to determine what motor controls need to be sent out. These motor controls would go through an L293D H-bridge motor control IC, which took a 5V VCC from the AtMega. The outputs from the L293D drove the two motors on the car. We did not use AtMega PWM for motor control. The ESP32CAM mounted on the front of the car did not use ESPNOW, however. It required Wifi to be able to send a livestream from the car, and this was displayed on a laptop using the camera’s IP address. An on board battery pack powered the AtMega, ESP32, and ESP32CAM.
+
+
+The device’s design remained the same as described in our proposal. Two buttons would allow the user to select answers to questions displayed on the LCD screen. We had two questions: one asking about the victim’s pain level and one asking about how urgently they need help. The questions are answered on a scale from 1 to 5. One button cycles through the 5 levels, and the other button selects. After the two questions are answered, the user holds the heart rate sensor on the device to get a heart reading. The analog heart reading is processed in the AtMega where it finds the average time between peaks to determine BPM. This gives an integer and is sent to the ESP32 through 3 pins by bit banging. Therefore, we needed to sync the clock cycles of the AtMega and ESP32. These values are stored in a packet and sent to the controller which prints the data out in Serial Monitor.
+
+#### 3.1 Software Requirements Specification (SRS) Results
+
+Based on your quantified system performance, comment on how you achieved or fell short of your expected software requirements. You should be quantifying this, using measurement tools to collect data.
+
+#### 3.2 Hardware Requirements Specification (HRS) Results
+
+Based on your quantified system performance, comment on how you achieved or fell short of your expected hardware requirements. You should be quantifying this, using measurement tools to collect data.
+
+### 4. Conclusion
+
+Reflect on your project. Some questions to consider: What did you learn from it? What went well? What accomplishments are you proud of? What did you learn/gain from this experience? Did you have to change your approach? What could have been done differently? Did you encounter obstacles that you didn’t anticipate? What could be a next step for this project?
+
+## References
+
+Fill in your references here as you work on your proposal and final submission. Describe any libraries used here.
+
 ## Final Project Proposal
 
 ### 1. Abstract
@@ -164,70 +227,3 @@ For MVP Demo:
 For Final Demo:
 
 * Together: everyone works on integrating the vehicle with the payload seamlessly, helping out with each part together as well.
-
-### 12. Proposal Presentation
-
-Added to Final Project Proposal Slide Deck.
-
-## Final Project Report
-
-[Final Project Github Page](https://ese3500.github.io/MEDEPLOY)
-
-### 1. Video
-
-<video src="Demo Video.mov" width="400" height="300" controls></video>
-
-[High Quality Video](https://drive.google.com/file/d/1yMe_-LCpSN9gtZ2RiFGLqDbZkPeV5HWe/view?usp=sharing)
-
-### 2. Images
-
-#### Car 
-<img src="car.jpg" alt="car" width="400"/>
-
-#### Wireless Camera
-<img src="cam.jpg" alt="cam" width="400"/>
-
-#### Wireless Camera Video Output
-<img src="computercam.jpg" alt="computercam" width="400"/>
-
-#### Joystick 
-<img src="joystick.jpg" alt="joystick" width="400"/>
-
-#### Driving 
-<img src="driving.jpg" alt="driving" width="400"/>
-
-#### Deploying Device 
-<img src="deploy.jpg" alt="deploy" width="300"/>
-
-#### Using Device 
-<img src="device.jpg" alt="device" width="300"/>
-
-### 3. Results
-
-What were your results? Namely, what was the final solution/design to your problem?
-
-The controller, car, and device all have an AtMega and ESP32.
-
-Our final controller design did not utilize Blynk. We instead chose to incorporate manual controls for a more reliable, physical interface on the controller. We used one button to open and close the door on the back of the car. An LED was tied to the button such that it would light when the door opened and turn off when the door closed. Driving was done through a joystick connected to the AtMega using ADC. We programmed 4 directions of travel: forward, backwards, left, and right when the joystick is pushed all the way in the up, down, left, right positions respectively. Direction data is sent through 3 bits, where 101 is forward, 010 is backward, 110 is left, 101 is right.
-
-
-The ESP32s communicate using the ESPNOW protocol, which connects multiple ESP32s by using their MAC addresses instead of Wifi. The car’s ESP32 receives the direction data through a packet and conditions on the 3 bits in the AtMega to determine what motor controls need to be sent out. These motor controls would go through an L293D H-bridge motor control IC, which took a 5V VCC from the AtMega. The outputs from the L293D drove the two motors on the car. We did not use AtMega PWM for motor control. The ESP32CAM mounted on the front of the car did not use ESPNOW, however. It required Wifi to be able to send a livestream from the car, and this was displayed on a laptop using the camera’s IP address. An on board battery pack powered the AtMega, ESP32, and ESP32CAM.
-
-
-The device’s design remained the same as described in our proposal. Two buttons would allow the user to select answers to questions displayed on the LCD screen. We had two questions: one asking about the victim’s pain level and one asking about how urgently they need help. The questions are answered on a scale from 1 to 5. One button cycles through the 5 levels, and the other button selects. After the two questions are answered, the user holds the heart rate sensor on the device to get a heart reading. The analog heart reading is processed in the AtMega where it finds the average time between peaks to determine BPM. This gives an integer and is sent to the ESP32 through 3 pins by bit banging. Therefore, we needed to sync the clock cycles of the AtMega and ESP32. These values are stored in a packet and sent to the controller which prints the data out in Serial Monitor.
-
-#### 3.1 Software Requirements Specification (SRS) Results
-
-Based on your quantified system performance, comment on how you achieved or fell short of your expected software requirements. You should be quantifying this, using measurement tools to collect data.
-
-#### 3.2 Hardware Requirements Specification (HRS) Results
-
-Based on your quantified system performance, comment on how you achieved or fell short of your expected hardware requirements. You should be quantifying this, using measurement tools to collect data.
-
-### 4. Conclusion
-
-Reflect on your project. Some questions to consider: What did you learn from it? What went well? What accomplishments are you proud of? What did you learn/gain from this experience? Did you have to change your approach? What could have been done differently? Did you encounter obstacles that you didn’t anticipate? What could be a next step for this project?
-
-## References
-
-Fill in your references here as you work on your proposal and final submission. Describe any libraries used here.
