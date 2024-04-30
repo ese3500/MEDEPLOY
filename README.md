@@ -175,30 +175,30 @@ Added to Final Project Proposal Slide Deck.
 
 ### 1. Video
 
-<video src="Demo Video.MOV" width="320" height="240" controls></video>
+<video src="final-project-medeploy/Demo Video.mov" width="320" height="240" controls></video>
 
 ### 2. Images
 
 #### Car 
-![car](car.jpg)
+<img src="car.jpg" alt="car" width="400"/>
 
 #### Wireless Camera
-![cam](cam.jpg)
+<img src="cam.jpg" alt="cam" width="400"/>
 
 #### Wireless Camera Video Output
-![computercam](computercam.jpg)
+<img src="computercam.jpg" alt="computercam" width="400"/>
 
 #### Joystick 
-![joystick](joystick.jpg)
+<img src="joystick.jpg" alt="joystick" width="400"/>
 
 #### Driving 
-![driving](driving.jpg)
+<img src="driving.jpg" alt="driving" width="400"/>
 
 #### Deploying Device 
-![deploy](deploy.jpg)
+<img src="deploy.jpg" alt="deploy" width="300"/>
 
 #### Using Device 
-![device](device.jpg)
+<img src="device.jpg" alt="device" width="300"/>
 
 ### 3. Results
 
