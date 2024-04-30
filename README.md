@@ -1,3 +1,7 @@
+<div style="float:right; margin:0 10px 0 0;">
+    <img src="carnice.png" width="400" height="500" alt="Description of the image">
+</div>
+
 Team Name: MEDEPLOY
 
 Team Members: Aaron Tsui, Dailing Wu, Ryan He
