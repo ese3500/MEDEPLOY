@@ -181,9 +181,23 @@ If you’ve never made a Github pages website before, you can follow this webpag
 #### Car 
 ![car](car.jpg)
 
-#### Cam 
+#### Wireless Camera
 ![cam](cam.jpg)
 
+#### Wireless Camera Video Output
+![computercam](computercam.jpg)
+
+#### Joystick 
+![joystick](joystick.jpg)
+
+#### Driving 
+![driving](driving.jpg)
+
+#### Deploying Device 
+![deploy](deploy.jpg)
+
+#### Using Device 
+![device](device.jpg)
 
 ### 3. Results
 
