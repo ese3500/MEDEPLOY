@@ -175,7 +175,7 @@ Added to Final Project Proposal Slide Deck.
 
 ### 1. Video
 
-<video src="path/to/video.mp4" width="320" height="240" controls></video>
+<video src="Demo Video.MOV" width="320" height="240" controls></video>
 
 ### 2. Images
 
