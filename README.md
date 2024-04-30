@@ -169,12 +169,11 @@ Added to Final Project Proposal Slide Deck.
 
 ## Final Project Report
 
-Don't forget to make the GitHub pages public website!
-If you’ve never made a Github pages website before, you can follow this webpage (though, substitute your final project repository for the Github username one in the quickstart guide):  <https://docs.github.com/en/pages/quickstart>
+Final Project Github Page: 
 
 ### 1. Video
 
-[Insert final project video here]
+[Video Link](https://drive.google.com/file/d/1yMe_-LCpSN9gtZ2RiFGLqDbZkPeV5HWe/view?usp=sharing)
 
 ### 2. Images
 
