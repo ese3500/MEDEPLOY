@@ -204,6 +204,16 @@ Added to Final Project Proposal Slide Deck.
 
 What were your results? Namely, what was the final solution/design to your problem?
 
+The controller, car, and device all have an AtMega and ESP32.
+
+Our final controller design did not utilize Blynk. We instead chose to incorporate manual controls for a more reliable, physical interface on the controller. We used one button to open and close the door on the back of the car. An LED was tied to the button such that it would light when the door opened and turn off when the door closed. Driving was done through a joystick connected to the AtMega using ADC. We programmed 4 directions of travel: forward, backwards, left, and right when the joystick is pushed all the way in the up, down, left, right positions respectively. Direction data is sent through 3 bits, where 101 is forward, 010 is backward, 110 is left, 101 is right.
+
+
+The ESP32s communicate using the ESPNOW protocol, which connects multiple ESP32s by using their MAC addresses instead of Wifi. The car’s ESP32 receives the direction data through a packet and conditions on the 3 bits in the AtMega to determine what motor controls need to be sent out. These motor controls would go through an L293D H-bridge motor control IC, which took a 5V VCC from the AtMega. The outputs from the L293D drove the two motors on the car. We did not use AtMega PWM for motor control. The ESP32CAM mounted on the front of the car did not use ESPNOW, however. It required Wifi to be able to send a livestream from the car, and this was displayed on a laptop using the camera’s IP address. An on board battery pack powered the AtMega, ESP32, and ESP32CAM.
+
+
+The device’s design remained the same as described in our proposal. Two buttons would allow the user to select answers to questions displayed on the LCD screen. We had two questions: one asking about the victim’s pain level and one asking about how urgently they need help. The questions are answered on a scale from 1 to 5. One button cycles through the 5 levels, and the other button selects. After the two questions are answered, the user holds the heart rate sensor on the device to get a heart reading. The analog heart reading is processed in the AtMega where it finds the average time between peaks to determine BPM. This gives an integer and is sent to the ESP32 through 3 pins by bit banging. Therefore, we needed to sync the clock cycles of the AtMega and ESP32. These values are stored in a packet and sent to the controller which prints the data out in Serial Monitor.
+
 #### 3.1 Software Requirements Specification (SRS) Results
 
 Based on your quantified system performance, comment on how you achieved or fell short of your expected software requirements. You should be quantifying this, using measurement tools to collect data.
