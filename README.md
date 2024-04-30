@@ -68,9 +68,35 @@ SRS 01 – Car ESP32 shall read 4 different push button states from Blynk over w
 We changed this SRS for joystick control. Because there was only one ADC on the AtMega, we rapidly switched between pins to get a reading of the x direction and y direction of the joystick. At the end of each loop, we do ```ADMUX ^= (1 << MUX0);``` to switch between pins PC0 and PC1 which correspond to x ADC and y ADC respectively. We move forward only if ```y >= 900 && x > 300 && x < 700```. We move backwards only if ```y <= 200 && x > 300 && x < 700```. We move left only if ```x >= 900 && y > 300 && y < 700```. We move right only if ```x <= 200 && y > 300 && y < 700```. This restricts movement control to only the far top, bottom, left, and right areas of the joystick. Everything else is neutral.
 
 SRS 02 – Car AtMega shall read the 4 pins and determine what direction the car is moving. Steering is done by spinning one wheel faster than the other. Therefore, the AtMega shall calculate the duty cycles of the left and right motors by setting OCR1B of Timer1 in Phase Correct PWM Mode. 75% duty cycle is full throttle and a difference of 50% duty cycle between each wheel will allow for steering.
+The data packet sent out by the controller ESP32 contains 4 values. ```p1```, ```p2```, ```p3``` correspond to the 3 bits that describe direction. ```Door``` determines whether or not the door should be open or closed.
+```
+typedef struct struct_message {
+   char msg[100];
+   //int state;
+   int p1;
+   int p2;
+   int p3;
+   int door;
+} struct_message;
+```
+We condition on the 3 bits (101 is forward, 010 is backward, 110 is left, 101 is right). Forward drives both motors clockwise. Backwards drive both motors counterclockwise. Left drives the right motor clockwise while the left motor is neutral. Right drives the left motor clockwise while the right motor is neutral. 
 
+
+We did not end up using PWM for throttle control. This decision was made due to the hardware restrictions of our car. The final weight of our car with battery, electronics, enclosure, and device was approximately 5 pounds, which was much heavier than we anticipated. Our motor driver took 5V VCC from the AtMega, which was powered by a 5V battery pack. At max power (5V), the motors barely had enough torque to move forward. At 4V, the car did not move due to the weight. The motors themselves were however rated up to 7.5V, so if we had a better power supply, throttle control may have been possible.
 SRS 03 – Device ESP32 shall send and receive data. Using the same Blynk protocol, the ESP32 receives data from two buttons under the LCD screen, corresponding to yes or no answers to prompts. A yes is 1 and a no is 0. The ESP32 will send this data to the driver’s computer. Answers will be displayed on the computer screen in real time.
+We did not end up sending data to the device ESP32. The idea was to send custom questions wirelessly to the device, but this would’ve required a web interface on a laptop to type in questions. Given time constraints, we chose to hard code 2 diagnostic questions into the device AtMega, but instead of yes and no questions, we allow users to select from a range of options. 
 
+
+The output packet of the device ESP32 holds 3 values. ```Pain``` records the pain level the victim selected. ```Help``` records how urgently the victim is requesting help. ```bpm``` records the heart rate obtained from the heart rate sensor.
+```
+typedef struct struct_message2 {
+   char msg[100];
+   //int state;
+   int pain;
+   int help;
+   int bpm;
+} struct_message2;
+```
 
 SRS 04 – Device AtMega shall cycle through a prepared series of diagnostic questions for the victim. It will read the button presses and only advance to the next question once the current question is answered. It should also have an internal timer that sends an alarm if the victim is unresponsive.
 
