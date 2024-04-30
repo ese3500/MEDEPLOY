@@ -1,6 +1,12 @@
 <div style="float:right; margin:0 10px 0 0;">
-    <img src="carnice.png" width="400" height="500" alt="Description of the image">
+    <img src="carnice.png" width="400" height="500" style="border: 4px solid darkgray;" alt="Description of the image">
 </div>
+
+<style>
+    body {
+        background-color: #f5f5dc; /* Light beige color */
+    }
+</style>
 
 Team Name: MEDEPLOY
 
@@ -18,32 +24,32 @@ Description of hardware: 3 ATMEGA328PB's, 3 ESP32 Feathers, 1 ESP32 CAM, UPenn E
 
 ### 1. Demo Video
 
-<video src="Demo Video.mov" width="400" height="300" controls></video>
+<video src="Demo Video.mov" style="border: 2px solid skyblue;" width="400" height="" controls ></video>
 
 [High Quality Video](https://drive.google.com/file/d/1yMe_-LCpSN9gtZ2RiFGLqDbZkPeV5HWe/view?usp=sharing)
 
 ### 2. Images
 
 #### Car 
-<img src="car.jpg" alt="car" width="400"/>
+<img src="car.jpg" alt="car" width="400" style="border: 2px solid skyblue;"/>
 
 #### Wireless Camera
-<img src="cam.jpg" alt="cam" width="400"/>
+<img src="cam.jpg" alt="cam" width="400" style="border: 2px solid skyblue;"/>
 
 #### Wireless Camera Video Output
-<img src="computercam.jpg" alt="computercam" width="400"/>
+<img src="computercam.jpg" alt="computercam" width="400" style="border: 2px solid skyblue;"/>
 
 #### Joystick 
-<img src="joystick.jpg" alt="joystick" width="400"/>
+<img src="joystick.jpg" alt="joystick" width="400" style="border: 2px solid skyblue;"/>
 
 #### Driving 
-<img src="driving.jpg" alt="driving" width="400"/>
+<img src="driving.jpg" alt="driving" width="400" style="border: 2px solid skyblue;"/>
 
 #### Deploying Device 
-<img src="deploy.jpg" alt="deploy" width="300"/>
+<img src="deploy.jpg" alt="deploy" width="300" style="border: 2px solid skyblue;"/>
 
 #### Using Device 
-<img src="device.jpg" alt="device" width="300"/>
+<img src="device.jpg" alt="device" width="300" style="border: 2px solid skyblue;"/>
 
 ### 3. Results
 
