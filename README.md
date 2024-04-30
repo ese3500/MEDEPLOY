@@ -1,8 +1,8 @@
-* Team Name: Medeploy
-* Team Members: Aaron Tsui, Dailing Wu, Ryan He
-* Github Repository URL: https://github.com/ese3500/Medeploy
-* Github Pages Website URL: https://ese3500.github.io/Medeploy
-* Description of hardware: 3 ATMEGA328PB's, 3 ESP32 Feathers, 1 ESP32 CAM, UPenn ESE department Halbot, ST7735R controller. See Hardware Requirements Specification for more details. 
+Team Name: MEDEPLOY
+Team Members: Aaron Tsui, Dailing Wu, Ryan He
+Github Repository URL: [https://github.com/ese3500/MEDEPLOY](https://github.com/ese3500/MEDEPLOY)
+Github Pages Website URL: [https://ese3500.github.io/MEDEPLOY](https://ese3500.github.io/MEDEPLOY)
+Description of hardware: 3 ATMEGA328PB's, 3 ESP32 Feathers, 1 ESP32 CAM, UPenn ESE department Halbot, L293D Motor Driver, ST7735R controller. See Hardware Requirements Specification for more details. 
 
 ## Final Project Proposal
 
