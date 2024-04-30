@@ -175,7 +175,9 @@ Added to Final Project Proposal Slide Deck.
 
 ### 1. Video
 
-<video src="final-project-medeploy/Demo Video.mov" width="320" height="240" controls></video>
+<video src="Demo Video.mov" width="400" height="300" controls></video>
+
+[High Quality Video](https://drive.google.com/file/d/1yMe_-LCpSN9gtZ2RiFGLqDbZkPeV5HWe/view?usp=sharing)
 
 ### 2. Images
 
