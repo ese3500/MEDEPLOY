@@ -171,11 +171,11 @@ Added to Final Project Proposal Slide Deck.
 
 ## Final Project Report
 
-[Final Project Github Page](https://ese3500.github.io/final-project-medeploy/)
+[Final Project Github Page](https://ese3500.github.io/MEDEPLOY)
 
 ### 1. Video
 
-[Video Link](https://drive.google.com/file/d/1yMe_-LCpSN9gtZ2RiFGLqDbZkPeV5HWe/view?usp=sharing)
+<video src="path/to/video.mp4" width="320" height="240" controls></video>
 
 ### 2. Images
 
