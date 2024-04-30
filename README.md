@@ -1,10 +1,10 @@
 <div style="float:right; margin:0 10px 0 0;">
-    <img src="carnice.png" width="400" height="500" style="border: 4px solid darkgray;" alt="Description of the image">
+    <img src="carnice.png" width="400" height="500" style="border: 4px solid white;" alt="Description of the image">
 </div>
 
 <style>
     body {
-        background-color: #f5f5dc; /* Light beige color */
+        background-image: url('background.jpeg')
     }
 </style>
 
@@ -24,32 +24,32 @@ Description of hardware: 3 ATMEGA328PB's, 3 ESP32 Feathers, 1 ESP32 CAM, UPenn E
 
 ### 1. Demo Video
 
-<video src="Demo Video.mov" style="border: 2px solid skyblue;" width="400" height="" controls ></video>
+<video src="Demo Video.mov" style="border: 2px solid white;" width="400" height="" controls ></video>
 
 [High Quality Video](https://drive.google.com/file/d/1yMe_-LCpSN9gtZ2RiFGLqDbZkPeV5HWe/view?usp=sharing)
 
 ### 2. Images
 
 #### Car 
-<img src="car.jpg" alt="car" width="400" style="border: 2px solid skyblue;"/>
+<img src="car.jpg" alt="car" width="400" style="border: 2px solid white;"/>
 
 #### Wireless Camera
-<img src="cam.jpg" alt="cam" width="400" style="border: 2px solid skyblue;"/>
+<img src="cam.jpg" alt="cam" width="400" style="border: 2px solid white;"/>
 
 #### Wireless Camera Video Output
-<img src="computercam.jpg" alt="computercam" width="400" style="border: 2px solid skyblue;"/>
+<img src="computercam.jpg" alt="computercam" width="400" style="border: 2px solid white;"/>
 
 #### Joystick 
-<img src="joystick.jpg" alt="joystick" width="400" style="border: 2px solid skyblue;"/>
+<img src="joystick.jpg" alt="joystick" width="400" style="border: 2px solid white;"/>
 
 #### Driving 
-<img src="driving.jpg" alt="driving" width="400" style="border: 2px solid skyblue;"/>
+<img src="driving.jpg" alt="driving" width="400" style="border: 2px solid white;"/>
 
 #### Deploying Device 
-<img src="deploy.jpg" alt="deploy" width="300" style="border: 2px solid skyblue;"/>
+<img src="deploy.jpg" alt="deploy" width="300" style="border: 2px solid white;"/>
 
 #### Using Device 
-<img src="device.jpg" alt="device" width="300" style="border: 2px solid skyblue;"/>
+<img src="device.jpg" alt="device" width="300" style="border: 2px solid white;"/>
 
 ### 3. Results
 
