@@ -178,7 +178,12 @@ If you’ve never made a Github pages website before, you can follow this webpag
 
 ### 2. Images
 
-[Insert final project images here]
+#### Car 
+![car](car.jpg)
+
+#### Cam 
+![cam](cam.jpg)
+
 
 ### 3. Results
 
